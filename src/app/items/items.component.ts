@@ -8,11 +8,12 @@ import { ITEMS } from '../mock-items';
   styleUrls: ['./items.component.scss']
 })
 export class ItemsComponent implements OnInit {
-  item: Item = {
-    id: 1,
-    name: "Poostorm"
-  }
   items = ITEMS;
+
+  selectedItem: Item;
+  onSelect(item: Item): void {
+    this.selectedItem = item;
+  }
 
   constructor() { }
 

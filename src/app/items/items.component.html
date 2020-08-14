@@ -1,7 +1,10 @@
-<h2>{{item.name | uppercase }} Details</h2>
-<div><span>id: </span>{{item.id}}</div>
-<div>
-    <label>name:
-      <input [(ngModel)]="item.name" placeholder="name"/>
-    </label>
-</div>
+<h2>My Items</h2>
+<ul class="items">
+  <li *ngFor="let item of items" 
+    [class.selected]="item === selectedItem"
+    (click)="onSelect(item)">
+    <span class="item">{{item.id}}</span> {{item.name}}
+  </li>
+</ul>
+
+<app-item-detail [item]="selectedItem"></app-item-detail>
