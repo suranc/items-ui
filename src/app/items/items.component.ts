@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../item';
 import { ItemService } from '../item.service';
+//import { LoggingService } from '../logging.service';
 
 @Component({
   selector: 'app-items',
@@ -18,9 +19,14 @@ export class ItemsComponent implements OnInit {
   selectedItem: Item;
   onSelect(item: Item): void {
     this.selectedItem = item;
+    item.id == 123
+    //const babies = foo;
+    console.log("This is normal error without a try catch");
+    throw(item);
+    //this.loggingService.sendLog(`{"message": "${item.name}"}`);
   }
 
-  constructor(private itemService: ItemService) { }
+  constructor(private itemService: ItemService) { }//, private loggingService: LoggingService) { }
 
   ngOnInit(): void {
     this.getItems();

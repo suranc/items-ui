@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,6 +7,8 @@ import { ItemsComponent } from './items/items.component';
 import { FormsModule } from '@angular/forms';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { MessagesComponent } from './messages/messages.component';
+import { HttpClientModule } from "@angular/common/http";
+import { LoggingService } from './logging.service';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,14 @@ import { MessagesComponent } from './messages/messages.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorHandler,
+      useClass: LoggingService
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
